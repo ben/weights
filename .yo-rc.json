@@ -1,0 +1,7 @@
+{
+  "generator-react-webpack": {
+    "appName": "weights",
+    "style": "less",
+    "postcss": true
+  }
+}
