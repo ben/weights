@@ -1,4 +1,5 @@
-require('normalize.css');
+require('styles/normalize.css')
+require('styles/skeleton.css')
 require('styles/App.css');
 
 import React from 'react';
@@ -8,9 +9,13 @@ let yeomanImage = require('../images/yeoman.png');
 class AppComponent extends React.Component {
   render() {
     return (
-      <div className="index">
-        <img src={yeomanImage} alt="Yeoman Generator" />
-        <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
+      <div className="container">
+          <section className="header">
+              <h1 className="title">Weights</h1>
+          </section>
+          <section>
+              <h4>What are we lifting today?</h4>
+          </section>
       </div>
     );
   }
