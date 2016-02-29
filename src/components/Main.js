@@ -1,3 +1,5 @@
+require('styles/normalize.css')
+require('styles/skeleton.css')
 require('styles/App.css');
 let LocalStorageMixin = require('react-localstorage');
 
