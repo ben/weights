@@ -1,7 +1,8 @@
 require('styles/normalize.css')
 require('styles/skeleton.css')
 require('styles/App.css');
-var SearchBar = require('./SearchBar')
+var SearchBar = require('./SearchBar');
+var MovementResults = require('./MovementResults');
 
 import React from 'react';
 
@@ -23,6 +24,9 @@ class AppComponent extends React.Component {
           </section>
           <section>
             <SearchBar onMovementChange={this.handleMovementChange.bind(this)} />
+          </section>
+          <section>
+            <MovementResults query={this.state.movement} />
           </section>
       </div>
     );

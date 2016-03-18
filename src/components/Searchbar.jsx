@@ -1,6 +1,3 @@
-require('styles/normalize.css')
-require('styles/skeleton.css')
-
 import React from 'react';
 
 class SearchBar extends React.Component {
