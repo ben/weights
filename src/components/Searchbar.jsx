@@ -14,7 +14,7 @@ class SearchBar extends React.Component {
   }
 
   componentDidMount() {
-    this.refs.searchinput.getDOMNode().focus();
+    this.refs.searchinput.focus();
   }
 }
 

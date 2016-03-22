@@ -1,4 +1,5 @@
 import React from 'react';
+import MovementResultRow from './MovementResultRowComponent';
 
 class MovementResults extends React.Component {
   constructor(props) {
@@ -29,15 +30,6 @@ class MovementResults extends React.Component {
       return x.recorded;
     });
 
-    if (results.length === 0) {
-      return (<div />);
-    }
-
-    var style={
-      width: '35px',
-      padding: 0
-    }
-
     return (
       <table className="u-full-width">
         <col />
@@ -45,30 +37,17 @@ class MovementResults extends React.Component {
         <col />
         <col />
         <col width="35px" />
-        <thead>
-          <tr>
-            <th>When</th>
-            <th>Movement</th>
-            <th>Weight</th>
-            <th>Reps</th>
-            <th></th>
-          </tr>
-        </thead>
         <tbody>
           {results.map(function (r) {
-            return (
-              <tr>
-                <td>{r.recorded.toLocaleString()}</td>
-                <td>{r.movement}</td>
-                <td>{r.weight}</td>
-                <td>{r.reps}</td>
-                <td><button style={style}>+</button></td>
-              </tr>
-            )
-          })}
+            return <MovementResultRow result={r} onNewRecord={this.handleNewRecord} />
+          }.bind(this))}
         </tbody>
       </table>
     )
+  }
+
+  handleNewRecord() {
+
   }
 }
 
