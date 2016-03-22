@@ -9,29 +9,30 @@ class NewRecordComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      open: false,
+      weight: '',
+      reps: ''
     };
   }
 
   render() {
-    if (this.props.name === '') {
+    if (this.props.movement === '') {
       return <div />
     }
 
     if (!this.state.open) {
-      return <button className="u-full-width"
-                     onClick={this.handleOpenClick.bind(this)}>
-        New entry
-      </button>
+      return (
+        <button
+            className="u-full-width"
+            onClick={this.handleOpenClick.bind(this)}>
+          New entry
+        </button>
+      )
     }
 
     return (
       <div className="newrecord-component">
         <form>
-          <label htmlFor="mvmt">Movement</label>
-          <input className="u-full-width" type="text" name="mvmt"
-            defaultValue={this.props.name}
-            onChange={this.handleUpdateName.bind(this)} />
           <label htmlFor="weight">Weight</label>
           <input className="u-full-width" type="tel" name="weight"
             onChange={this.handleUpdateWeight.bind(this)} />
@@ -51,12 +52,6 @@ class NewRecordComponent extends React.Component {
     );
   }
 
-  handleUpdateName(e) {
-    this.setState({
-      movement: e.target.value
-    });
-  }
-
   handleUpdateWeight(e) {
     this.setState({
       weight: parseInt(e.target.value)
@@ -72,17 +67,18 @@ class NewRecordComponent extends React.Component {
   handleOpenClick(e) {
     e.preventDefault();
     this.setState({
-      open: !this.state.open
+      open: !this.state.open,
+      movement: this.props.Movement
     })
   }
 
   handleSave(e) {
     e.preventDefault();
     this.props.onNewRecord({
-      movement: this.state.movement,
       weight: this.state.weight,
       reps: this.state.reps
     });
+    this.setState({open: false});
   }
 }
 
@@ -91,7 +87,6 @@ NewRecordComponent.displayName = 'NewRecordComponent';
 // Uncomment properties you need
 NewRecordComponent.propTypes = {
   onNewRecord: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired
 };
 // NewRecordComponent.defaultProps = {};
 

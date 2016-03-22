@@ -7,6 +7,16 @@ import NewRecord from './NewRecordComponent';
 
 import React from 'react';
 
+function loadRecords() {
+  let raw = localStorage.getItem('weights') || '[]';
+  return JSON.parse(raw);
+}
+
+function saveRecords(records) {
+  let json = JSON.stringify(records);
+  localStorage.setItem('weights', json);
+}
+
 class AppComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +25,12 @@ class AppComponent extends React.Component {
       movement: '',
       records: []
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      records: loadRecords()
+    });
   }
 
   render() {
@@ -27,10 +43,15 @@ class AppComponent extends React.Component {
             <SearchBar onMovementChange={this.handleMovementChange.bind(this)} />
           </section>
           <section>
-            <NewRecord name={this.state.movement} onNewRecord={this.handleNewRecord.bind(this)} />
+            <NewRecord
+              movement={this.state.movement}
+              onNewRecord={this.handleNewRecord.bind(this)} />
           </section>
           <section>
-            <MovementResults query={this.state.movement} onNewRecord={this.handleNewRecord.bind(this)} />
+            <MovementResults
+              query={this.state.movement}
+              records={this.state.records}
+              onNewRecord={this.handleNewRecord.bind(this)} />
           </section>
       </div>
     );
@@ -41,7 +62,14 @@ class AppComponent extends React.Component {
   }
 
   handleNewRecord(r) {
-    console.log(r);
+    r.recorded = new Date();
+    r.movement = this.state.movement;
+    let records = loadRecords();
+    records.push(r);
+    saveRecords(records);
+    this.setState({
+      records: records
+    });
   }
 }
 
