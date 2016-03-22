@@ -6,10 +6,15 @@ class SearchBar extends React.Component {
       <div>
         <label htmlFor="movement">What are we lifting today?</label>
         <input className="u-full-width" placeholder="Movement" type="text" id="movement"
+          ref="searchinput"
           onChange={this.props.onMovementChange}>
         </input>
       </div>
     )
+  }
+
+  componentDidMount() {
+    this.refs.searchinput.getDOMNode().focus();
   }
 }
 
