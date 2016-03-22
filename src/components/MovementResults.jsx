@@ -31,23 +31,16 @@ class MovementResults extends React.Component {
     });
 
     return (
-      <table className="u-full-width">
-        <col />
-        <col />
-        <col />
-        <col />
-        <col width="35px" />
-        <tbody>
-          {results.map(function (r) {
-            return <MovementResultRow result={r} onNewRecord={this.handleNewRecord} />
-          }.bind(this))}
-        </tbody>
-      </table>
+      <div>
+        {results.map(function (r) {
+          return <MovementResultRow key={r.recorded} result={r} onNewRecord={this.handleNewRecord} />
+        }.bind(this))}
+      </div>
     )
   }
 
-  handleNewRecord() {
-
+  handleNewRecord(r) {
+    console.log(r);
   }
 }
 
