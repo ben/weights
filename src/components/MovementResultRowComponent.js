@@ -38,13 +38,13 @@ class MovementResultRowComponent extends React.Component {
 
     return (
       <div className="row movementresultrow-component">
+        <button className="u-pull-right" onClick={this.handlePlusClick.bind(this)}>
+          {this.state.open ? '\u00d7' : '\u002b'}
+        </button>
         {moment(this.props.result.recorded).format('MMM D')} &nbsp;&mdash;
         &nbsp;{this.props.result.movement}
         &nbsp;{this.props.result.weight}#
         &nbsp;&times;{this.props.result.reps}
-        <button className="u-pull-right" onClick={this.handlePlusClick.bind(this)}>
-          {this.state.open ? '\u00d7' : '\u002b'}
-        </button>
         {form}
       </div>
     );
