@@ -7,8 +7,8 @@ require('styles//MovementResultRow.less');
 const moment = require('moment');
 
 class MovementResultRowComponent extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       open: false,
       weight: 0,
