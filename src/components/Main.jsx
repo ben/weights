@@ -26,7 +26,7 @@ class AppComponent extends React.Component {
             <SearchBar onMovementChange={this.handleMovementChange.bind(this)} />
           </section>
           <section>
-            <MovementResults query={this.state.movement} />
+            <MovementResults query={this.state.movement} onNewRecord={this.handleNewRecord.bind(this)} />
           </section>
       </div>
     );
@@ -34,6 +34,10 @@ class AppComponent extends React.Component {
 
   handleMovementChange(e) {
     this.setState({movement: e.target.value});
+  }
+
+  handleNewRecord(r) {
+    console.log(r);
   }
 }
 

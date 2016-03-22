@@ -33,14 +33,10 @@ class MovementResults extends React.Component {
     return (
       <div>
         {results.map(function (r) {
-          return <MovementResultRow key={r.recorded} result={r} onNewRecord={this.handleNewRecord} />
+          return <MovementResultRow key={r.recorded} result={r} onNewRecord={this.props.onNewRecord} />
         }.bind(this))}
       </div>
     )
-  }
-
-  handleNewRecord(r) {
-    console.log(r);
   }
 }
 

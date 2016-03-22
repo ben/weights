@@ -12,7 +12,7 @@ class MovementResultRowComponent extends React.Component {
     this.state = {
       open: false,
       weight: 0,
-      reps: 0,
+      reps: 0
     }
   }
 
@@ -59,7 +59,7 @@ class MovementResultRowComponent extends React.Component {
     this.setState({weight: parseInt(e.target.value)});
   }
 
-  handleRepsChange() {
+  handleRepsChange(e) {
     this.setState({reps: parseInt(e.target.value)});
   }
 
@@ -68,7 +68,7 @@ class MovementResultRowComponent extends React.Component {
     this.setState({open: false});
     this.props.onNewRecord({
       weight: this.state.weight,
-      reps: this.state.reps,
+      reps: this.state.reps
     });
   }
 }
@@ -78,7 +78,7 @@ MovementResultRowComponent.displayName = 'MovementResultRowComponent';
 // Uncomment properties you need
 MovementResultRowComponent.propTypes = {
   onNewRecord: PropTypes.func.isRequired,
-  result: PropTypes.object.isRequired,
+  result: PropTypes.object.isRequired
 };
 // MovementResultRowComponent.defaultProps = {};
 
