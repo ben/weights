@@ -36,6 +36,10 @@ class MovementResultRowComponent extends React.Component {
       </form>;
     }
 
+    const times = /^\d+$/.test(this.props.result.reps)
+      ? <span>&times;{this.props.result.reps}</span>
+      : <span>{this.props.result.reps}</span>
+
     return (
       <div className="row movementresultrow-component">
         <button className="u-pull-right" onClick={this.handlePlusClick.bind(this)}>
@@ -44,7 +48,7 @@ class MovementResultRowComponent extends React.Component {
         {moment(this.props.result.recorded).format('MMM D')} &nbsp;&mdash;
         &nbsp;{this.props.result.movement}
         &nbsp;{this.props.result.weight}#
-        &nbsp;&times;{this.props.result.reps}
+        &nbsp;{times}
         {form}
       </div>
     );
@@ -56,11 +60,11 @@ class MovementResultRowComponent extends React.Component {
   }
 
   handleWeightChange(e) {
-    this.setState({weight: parseInt(e.target.value)});
+    this.setState({weight: e.target.value});
   }
 
   handleRepsChange(e) {
-    this.setState({reps: parseInt(e.target.value)});
+    this.setState({reps: e.target.value});
   }
 
   handleSaveClick(e) {

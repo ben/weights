@@ -86,7 +86,7 @@ NewRecordComponent.displayName = 'NewRecordComponent';
 
 // Uncomment properties you need
 NewRecordComponent.propTypes = {
-  onNewRecord: PropTypes.func.isRequired,
+  onNewRecord: PropTypes.func.isRequired
 };
 // NewRecordComponent.defaultProps = {};
 
