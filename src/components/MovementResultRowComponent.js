@@ -45,7 +45,7 @@ class MovementResultRowComponent extends React.Component {
         <button className="u-pull-right" onClick={this.handlePlusClick.bind(this)}>
           {this.state.open ? '\u00d7' : '\u002b'}
         </button>
-        {moment(this.props.result.recorded).format('MMM D')} &nbsp;&mdash;
+        {moment(this.props.result.recorded).format('MM/DD/YY')} &nbsp;&ndash;
         &nbsp;{this.props.result.movement}
         &nbsp;{this.props.result.weight}#
         &nbsp;{times}
