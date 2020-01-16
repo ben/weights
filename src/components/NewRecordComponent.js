@@ -52,15 +52,22 @@ class NewRecordComponent extends React.Component {
     );
   }
 
+  parse(str) {
+    if (str.trim().match(/^\d+$/)) {
+      return parseInt(str)
+    }
+    return str
+  }
+
   handleUpdateWeight(e) {
     this.setState({
-      weight: parseInt(e.target.value)
+      weight: this.parse(e.target.value)
     })
   }
 
   handleUpdateReps(e) {
     this.setState({
-      reps: parseInt(e.target.value)
+      reps: this.parse(e.target.value)
     })
   }
 
